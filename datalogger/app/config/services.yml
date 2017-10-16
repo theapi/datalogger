@@ -33,3 +33,10 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+
+    AppBundle\Service\WeightProcessor:
+        public: true
+        calls:
+            - method: setContainer
+              arguments:
+                  - '@service_container'
