@@ -33,12 +33,3 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
-
-    AppBundle\Service\WeightProcessor:
-        public: true
-        tags:
-            - { name: event_subscriber }
-        calls:
-            - method: setContainer
-              arguments:
-                  - '@service_container'
