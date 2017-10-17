@@ -43,9 +43,6 @@ class WeightCommand extends ContainerAwareCommand {
     $output->writeln('weight: ' . $input->getArgument('weight'));
     $output->writeln('battery: ' . $input->getOption('battery'));
 
-    // Initialize the weight processing service.
-    $this->getContainer()->get(WeightProcessor::class);
-
     // The data to be processed.
     $weight = (new Weight())
       ->setKg($input->getArgument('weight'))

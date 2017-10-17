@@ -36,6 +36,8 @@ services:
 
     AppBundle\Service\WeightProcessor:
         public: true
+        tags:
+            - { name: event_subscriber }
         calls:
             - method: setContainer
               arguments:

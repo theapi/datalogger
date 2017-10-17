@@ -6,8 +6,9 @@ namespace AppBundle\Service;
 use AppBundle\Event\WeightInsertEvent;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-class WeightProcessor implements ContainerAwareInterface {
+class WeightProcessor implements ContainerAwareInterface, EventSubscriberInterface {
 
   /**
    * @var ContainerInterface|null
@@ -19,13 +20,15 @@ class WeightProcessor implements ContainerAwareInterface {
    */
   public function setContainer(ContainerInterface $container = NULL) {
     $this->container = $container;
-    $this->addListeners();
   }
 
-
-  public function addListeners() {
-    $dispatcher = $this->getContainer()->get('event_dispatcher');
-    $dispatcher->addListener('weight.insert', array($this, 'handleWeightInsert'));
+  /**
+   * @inheritDoc
+   */
+  public static function getSubscribedEvents() {
+    return [
+      WeightInsertEvent::NAME => 'handleWeightInsert',
+    ];
   }
 
   public function handleWeightInsert(WeightInsertEvent $event) {
@@ -34,8 +37,6 @@ class WeightProcessor implements ContainerAwareInterface {
 
   /**
    * @return ContainerInterface
-   *
-   * @throws \LogicException
    */
   public function getContainer() {
     return $this->container;
