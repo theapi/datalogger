@@ -67,3 +67,9 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+theapi_google_api_client:
+    application_name: 'Google Sheets API'
+    scopes: 'https://www.googleapis.com/auth/spreadsheets'
+    client_secret_path: '/opt/googleapi/credentials/bathroom_scales_client_secret.json'
+    credentials_path: '/opt/googleapi/credentials/sheets.googleapis.com-php-bathroom_scales.json'

@@ -16,6 +16,8 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
+            new Theapi\BathroomScalesBundle\TheapiBathroomScalesBundle(),
+            new Theapi\GoogleApiClientBundle\TheapiGoogleApiClientBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
