@@ -1,3 +1,0 @@
-theapi_bathroom_scales_homepage:
-    path:     /
-    defaults: { _controller: TheapiBathroomScalesBundle:Default:index }
